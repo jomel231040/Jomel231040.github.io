@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Love Letter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0;
+      font-family: 'Segoe Script', cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .letter {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 600px;
+      animation: fadeIn 3s ease-in;
+    }
+
+    h1 {
+      color: #d6336c;
+      text-align: center;
+    }
+
+    .content {
+      font-size: 20px;
+      color: #333;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      animation: typing 4s steps(60, end), blink-caret 0.75s step-end infinite;
+      border-right: 2px solid #d6336c;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #d6336c; }
+    }
+  </style>
+</head>
+<body>
+  <div class="letter">
+    <h1>To My Love 🤍🤍</h1>
+    <div class="content">
+      My love,
+
+      Every moment with you feels like a beautiful dream I never want to wake up from.
+      Your smile is my sunshine, your voice is my melody, and your heart is my home.
+
+      Thank you for loving me and staying by my side. I promise to cherish you forever.
+
+      Always yours,
+      SSOB 💌
+    </div>
+  </div>
+</body>
+</html>
