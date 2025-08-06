@@ -1,77 +1,118 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> Love Letter</title>
+  <title>Happy Birthday, My Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #ffe6f0;
-      font-family: 'Segoe Script', cursive;
+      background: linear-gradient(135deg, #ffe4ec, #fff0f5);
+      font-family: 'Roboto', sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
       overflow: hidden;
     }
 
-    .letter {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      width: 90%;
-      max-width: 600px;
-      animation: fadeIn 3s ease-in;
+    .card {
+      background: #fff;
+      padding: 50px;
+      border-radius: 30px;
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+      text-align: center;
+      max-width: 650px;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
-      color: #d6336c;
-      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 52px;
+      color: #e60073;
+      margin-bottom: 20px;
     }
 
-    .content {
+    p {
       font-size: 20px;
-      color: #333;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      animation: typing 4s steps(60, end), blink-caret 0.75s step-end infinite;
-      border-right: 2px solid #d6336c;
+      color: #4b2c3a;
+      line-height: 1.8;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: 24px;
+      font-family: 'Great Vibes', cursive;
+      color: #cc0066;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
       overflow: hidden;
+      z-index: 1;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+    .heart {
+      position: absolute;
+      color: #ff3366;
+      font-size: 24px;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.7;
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: #d6336c; }
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="letter">
-    <h1>To My Love 🤍🤍</h1>
-    <div class="content">
-      My love,
-
-      Every moment with you feels like a beautiful dream I never want to wake up from.
-      Your smile is my sunshine, your voice is my melody, and your heart is my home.
-
-      Thank you for loving me and staying by my side. I promise to cherish you forever.
-
-      Always yours,
-      SSOB 💌
+  <div class="card">
+    <h1>Happy Birthday, Love 🎉</h1>
+    <p>
+      March 20, 2025 – the day we first talked and shared something beautiful that I’ll always remember the day we first met I'll never forget that one unexpected moment when everything changed. I didn’t know then how much you'd come to mean to me, but now I can’t imagine my life without you in it. That day lives in my heart forever, because it was the beginning of us.<br><br>
+      Today marks a special chapter in your life — you're officially 18, and I couldn’t be more proud of the beautiful, strong, and kind woman you’re becoming. From the moment we talked on March 20, 2025, something in my heart knew that you were special. That day meant so much to me, and I’ll keep it close forever.
+       <br><br>
+      On your birthday, I want to remind you how much you mean to me — you’re my safe place, my inspiration, and my happiness. I’m so lucky to grow with you, laugh with you, and love you.
+      <br>
+      As you step into adulthood, may this new season bring you more dreams to chase, more blessings to enjoy, and more love to feel — especially from me. 🥰
+       <br><br>
+      Let’s celebrate this day with love, joy, and memories that will last a lifetime.
+Always here for you, always cheering for you, always loving you. 💫
+    </p>
+    <div class="signature">
+      With all my love,<br>
+      ❤️ ssob
     </div>
+    <div class="hearts" id="hearts"></div>
   </div>
+
+  <script>
+    const heartContainer = document.getElementById("hearts");
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+      heart.style.fontSize = (20 + Math.random() * 25) + "px";
+      heartContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 300);
+  </script>
 </body>
 </html>
