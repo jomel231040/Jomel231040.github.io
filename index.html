@@ -1,118 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday, My Love</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rose Surprise</title>
+<style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ffe4ec, #fff0f5);
-      font-family: 'Roboto', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .card {
-      background: #fff;
-      padding: 50px;
-      border-radius: 30px;
-      box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
-      text-align: center;
-      max-width: 650px;
-      position: relative;
-      z-index: 2;
+        background: #1a1a1a;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        overflow: hidden;
     }
 
     h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 52px;
-      color: #e60073;
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
 
-    p {
-      font-size: 20px;
-      color: #4b2c3a;
-      line-height: 1.8;
+    .birthday-button__rose {
+        width: 180px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
     }
 
-    .signature {
-      margin-top: 30px;
-      font-size: 24px;
-      font-family: 'Great Vibes', cursive;
-      color: #cc0066;
+    .birthday-button__rose:hover {
+        transform: scale(1.05);
     }
 
-    .hearts {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
+    .message {
+        display: none;
+        font-size: 2rem;
+        color: pink;
+        margin-top: 20px;
+        animation: pop 0.6s ease forwards;
     }
 
-    .heart {
-      position: absolute;
-      color: #ff3366;
-      font-size: 24px;
-      animation: float 6s ease-in-out infinite;
-      opacity: 0.7;
+    @keyframes pop {
+        0% { transform: scale(0); opacity: 0; }
+        70% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); }
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(0) scale(1);
+    /* Confetti styles */
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        top: 0;
+        left: 0;
         opacity: 0.9;
-      }
-      100% {
-        transform: translateY(-800px) scale(1.5);
-        opacity: 0;
-      }
+        pointer-events: none;
+        animation: fall 3s linear forwards;
     }
-  </style>
+
+    @keyframes fall {
+        0% { transform: translateY(-10px) rotate(0deg); }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+</style>
 </head>
 <body>
-  <div class="card">
-    <h1>Happy Birthday, Love 🎉</h1>
-    <p>
-      March 20, 2025 – the day we first talked and shared something beautiful that I’ll always remember the day we first met I'll never forget that one unexpected moment when everything changed. I didn’t know then how much you'd come to mean to me, but now I can’t imagine my life without you in it. That day lives in my heart forever, because it was the beginning of us.<br><br>
-      Today marks a special chapter in your life — you're officially 18, and I couldn’t be more proud of the beautiful, strong, and kind woman you’re becoming. From the moment we talked on March 20, 2025, something in my heart knew that you were special. That day meant so much to me, and I’ll keep it close forever.
-       <br><br>
-      On your birthday, I want to remind you how much you mean to me — you’re my safe place, my inspiration, and my happiness. I’m so lucky to grow with you, laugh with you, and love you.
-      <br>
-      As you step into adulthood, may this new season bring you more dreams to chase, more blessings to enjoy, and more love to feel — especially from me. 🥰
-       <br><br>
-      Let’s celebrate this day with love, joy, and memories that will last a lifetime.
-Always here for you, always cheering for you, always loving you. 💫
-    </p>
-    <div class="signature">
-      With all my love,<br>
-      ❤️ ssob
-    </div>
-    <div class="hearts" id="hearts"></div>
-  </div>
 
-  <script>
-    const heartContainer = document.getElementById("hearts");
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerText = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 4) + "s";
-      heart.style.fontSize = (20 + Math.random() * 25) + "px";
-      heartContainer.appendChild(heart);
-      setTimeout(() => heart.remove(), 7000);
+<h1>Click the rose 🌹</h1>
+
+<!-- More realistic rose SVG -->
+<svg class="birthday-button__rose" viewBox="0 0 512 512">
+    <path fill="#d81b60" d="M256 20c-60 0-120 50-120 110 0 60 50 110 120 110s120-50 120-110c0-60-50-110-120-110z"/>
+    <path fill="#c2185b" d="M256 50c-40 0-80 35-80 80s40 80 80 80 80-35 80-80-40-80-80-80z"/>
+    <path fill="#ad1457" d="M256 80c-20 0-50 20-50 50s30 50 50 50 50-20 50-50-30-50-50-50z"/>
+    <path fill="#388e3c" d="M246 230h20v200h-20z"/>
+    <path fill="#2e7d32" d="M246 300c-30 20-60 50-80 90h20c20-30 40-50 60-60v-30z"/>
+    <path fill="#2e7d32" d="M266 300v30c20 10 40 30 60 60h20c-20-40-50-70-80-90z"/>
+</svg>
+
+<div class="message">I Love You ❤️</div>
+
+<script>
+    const rose = document.querySelector('.birthday-button__rose');
+    const message = document.querySelector('.message');
+
+    function createConfetti() {
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
     }
-    setInterval(createHeart, 300);
-  </script>
+
+    rose.addEventListener('click', () => {
+        message.style.display = 'block';
+        createConfetti();
+    });
+</script>
+
 </body>
 </html>
