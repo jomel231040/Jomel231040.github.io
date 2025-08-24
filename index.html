@@ -1,110 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rose Surprise</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmer's Flowers 🌸</title>
+  <style>
     body {
-        background: #1a1a1a;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        overflow: hidden;
+      background: #131b21;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
 
-    h1 {
-        margin-bottom: 20px;
+    .container {
+      width: 70%;
     }
 
-    .birthday-button__rose {
-        width: 180px;
-        cursor: pointer;
-        transition: transform 0.3s ease;
+    svg {
+      width: 100%;
+      height: auto;
     }
 
-    .birthday-button__rose:hover {
-        transform: scale(1.05);
+    /* Stem + Leaves appear with draw */
+    path.stem, path.leaf, path.vine {
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      stroke-width: 3;
+      fill: none;
+      opacity: 0;
+      animation: draw 2s ease forwards;
     }
 
-    .message {
-        display: none;
-        font-size: 2rem;
-        color: pink;
-        margin-top: 20px;
-        animation: pop 0.6s ease forwards;
+    .stem { stroke: #2e8b57; animation-delay: 0s; }
+    .leaf { stroke: #3cb371; fill: #2e8b57; animation-delay: 1s; }
+
+    /* Vines */
+    .vine { stroke: #2e8b57; stroke-width: 2; animation-delay: 3s; }
+
+    /* Petals bloom */
+    .petal {
+      transform-origin: center bottom;
+      transform-box: fill-box;
+      fill: #ffb6c1;
+      opacity: 0;
+      transform: scale(0);
+      animation: bloom 1s ease-out forwards;
     }
 
-    @keyframes pop {
-        0% { transform: scale(0); opacity: 0; }
-        70% { transform: scale(1.2); opacity: 1; }
-        100% { transform: scale(1); }
+    /* Left flower petals */
+    .petal1 { animation-delay: 2s; }
+    .petal2 { animation-delay: 2.3s; }
+    .petal3 { animation-delay: 2.6s; }
+
+    /* Right flower petals */
+    .petal4 { animation-delay: 2.9s; }
+    .petal5 { animation-delay: 3.2s; }
+    .petal6 { animation-delay: 3.5s; }
+
+    /* Buds */
+    .bud {
+      fill: #ff69b4;
+      opacity: 0;
+      transform: scale(0);
+      transform-origin: center;
+      animation: bud 0.8s ease-out forwards;
+      animation-delay: 3.7s;
     }
 
-    /* Confetti styles */
-    .confetti {
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background-color: red;
-        top: 0;
-        left: 0;
-        opacity: 0.9;
-        pointer-events: none;
-        animation: fall 3s linear forwards;
+    /* Vine flourish leaves */
+    .vine-leaf {
+      fill: #2e8b57;
+      opacity: 0;
+      transform: scale(0);
+      transform-origin: center;
+      animation: bud 0.6s ease-out forwards;
     }
 
-    @keyframes fall {
-        0% { transform: translateY(-10px) rotate(0deg); }
-        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    .leaf1 { animation-delay: 3.9s; }
+    .leaf2 { animation-delay: 4.1s; }
+    .leaf3 { animation-delay: 4.3s; }
+    .leaf4 { animation-delay: 4.5s; }
+
+    /* Glowing sparkles */
+    .dot {
+      fill: #adff2f;
+      opacity: 0;
+      filter: url(#glow);
+      animation: glow 3s ease-in-out infinite, float 4s ease-in-out infinite;
     }
-</style>
+
+    /* Stagger glow timings */
+    .dot1 { animation-delay: 4.2s, 0s; animation-duration: 2.5s, 5s; }
+    .dot2 { animation-delay: 4.7s, 1s; animation-duration: 3.2s, 6s; }
+    .dot3 { animation-delay: 5.1s, 0.5s; animation-duration: 2.8s, 5.5s; }
+    .dot4 { animation-delay: 5.6s, 1.5s; animation-duration: 3.5s, 6.5s; }
+    .dot5 { animation-delay: 6s, 0.8s; animation-duration: 2.7s, 5.2s; }
+    .dot6 { animation-delay: 6.4s, 1.2s; animation-duration: 3.1s, 6.2s; }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    @keyframes bloom {
+      from { transform: scale(0.1) rotate(-20deg); opacity: 0; }
+      to { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes bud {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes glow {
+      0%   { opacity: 0; r: 2; }
+      50%  { opacity: 1; r: 4; }
+      100% { opacity: 0; r: 2; }
+    }
+
+    @keyframes float {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-2px, -3px); }
+      50%  { transform: translate(2px, 2px); }
+      75%  { transform: translate(-1px, 2px); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <!-- Glow filter for sparkles -->
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
 
-<h1>Click the rose 🌹</h1>
+      <!-- Left Stem -->
+      <path class="stem" d="M200,300 C150,200 150,150 180,100" />
 
-<!-- More realistic rose SVG -->
-<svg class="birthday-button__rose" viewBox="0 0 512 512">
-    <path fill="#d81b60" d="M256 20c-60 0-120 50-120 110 0 60 50 110 120 110s120-50 120-110c0-60-50-110-120-110z"/>
-    <path fill="#c2185b" d="M256 50c-40 0-80 35-80 80s40 80 80 80 80-35 80-80-40-80-80-80z"/>
-    <path fill="#ad1457" d="M256 80c-20 0-50 20-50 50s30 50 50 50 50-20 50-50-30-50-50-50z"/>
-    <path fill="#388e3c" d="M246 230h20v200h-20z"/>
-    <path fill="#2e7d32" d="M246 300c-30 20-60 50-80 90h20c20-30 40-50 60-60v-30z"/>
-    <path fill="#2e7d32" d="M266 300v30c20 10 40 30 60 60h20c-20-40-50-70-80-90z"/>
-</svg>
+      <!-- Right Stem -->
+      <path class="stem" d="M200,300 C250,200 250,150 220,100" />
 
-<div class="message">I Love You ❤️</div>
+      <!-- Left Leaves -->
+      <path class="leaf" d="M170,220 C150,210 140,230 160,240 Z"/>
+      <path class="leaf" d="M190,250 C170,250 170,270 190,270 Z"/>
 
-<script>
-    const rose = document.querySelector('.birthday-button__rose');
-    const message = document.querySelector('.message');
+      <!-- Right Leaves -->
+      <path class="leaf" d="M230,220 C250,210 260,230 240,240 Z"/>
+      <path class="leaf" d="M210,250 C230,250 230,270 210,270 Z"/>
 
-    function createConfetti() {
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.left = Math.random() * window.innerWidth + 'px';
-            confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
-            document.body.appendChild(confetti);
+      <!-- Left Flower Petals -->
+      <path class="petal petal1" d="M180,100 C160,60 200,60 180,100 Z" />
+      <path class="petal petal2" d="M180,100 C170,80 190,80 180,100 Z" />
+      <path class="petal petal3" d="M180,100 C190,80 210,100 180,100 Z" />
 
-            setTimeout(() => {
-                confetti.remove();
-            }, 3000);
-        }
-    }
+      <!-- Right Flower Petals -->
+      <path class="petal petal4" d="M220,100 C240,60 200,60 220,100 Z" />
+      <path class="petal petal5" d="M220,100 C230,80 210,80 220,100 Z" />
+      <path class="petal petal6" d="M220,100 C210,80 190,100 220,100 Z" />
 
-    rose.addEventListener('click', () => {
-        message.style.display = 'block';
-        createConfetti();
-    });
-</script>
+      <!-- Buds -->
+      <circle class="bud" cx="180" cy="95" r="5"/>
+      <circle class="bud" cx="220" cy="95" r="5"/>
 
+      <!-- Curved Flourish Vines -->
+      <path class="vine" d="M200,300 C120,250 100,180 130,130" />
+      <path class="vine" d="M200,300 C280,250 300,180 270,130" />
+
+      <!-- Small vine leaves -->
+      <ellipse class="vine-leaf leaf1" cx="150" cy="220" rx="6" ry="3" />
+      <ellipse class="vine-leaf leaf2" cx="250" cy="220" rx="6" ry="3" />
+      <ellipse class="vine-leaf leaf3" cx="140" cy="170" rx="6" ry="3" />
+      <ellipse class="vine-leaf leaf4" cx="260" cy="170" rx="6" ry="3" />
+
+      <!-- Floating glowing sparkles -->
+      <circle class="dot dot1" cx="160" cy="200" r="2"/>
+      <circle class="dot dot2" cx="240" cy="200" r="2"/>
+      <circle class="dot dot3" cx="150" cy="150" r="2"/>
+      <circle class="dot dot4" cx="250" cy="150" r="2"/>
+      <circle class="dot dot5" cx="180" cy="250" r="2"/>
+      <circle class="dot dot6" cx="220" cy="250" r="2"/>
+    </svg>
+  </div>
 </body>
 </html>
